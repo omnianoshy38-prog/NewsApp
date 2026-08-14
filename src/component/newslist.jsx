@@ -9,7 +9,7 @@ function NewsList() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("technology");
 
-  const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+  //const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
   async function getNews(url) {
     try {
@@ -35,27 +35,19 @@ function NewsList() {
 
   // أول ما الصفحة تفتح + كل ما category تتغير
   useEffect(() => {
-    getNews(
-      `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`
-    );
+    getNews(`/api/news?category=${category}`);
   }, [category]);
 
   function handleSearch() {
     if (!search.trim()) {
-      getNews(
-        `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`
-      );
+      getNews(`/api/news?category=${category}`);
       return;
     }
 
-    getNews(
-      `https://newsapi.org/v2/everything?q=${encodeURIComponent(
-        search
-      )}&language=en&sortBy=publishedAt&apiKey=${API_KEY}`
-    );
+    getNews(`/api/news?search=${encodeURIComponent(search)}`);
   }
 
- return (
+  return (
   <main className="news-container">
 
     <div className="search-box">
