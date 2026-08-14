@@ -1,25 +1,41 @@
-import { useState } from 'react'
+import { useState } from "react";
+import "../styles/newscard.css";
 
-function NewsCard({ title, description, image }) {
-  const [favorite, setFavorite] = useState(false)
+function NewsCard({ title, description, image, url }) {
+  const [favorite, setFavorite] = useState(false);
 
   function handleFavorite() {
-    setFavorite(!favorite)
+    setFavorite(!favorite);
   }
 
   return (
-    <article>
-      <img src={image} alt={title} />
+    <article className="news-card">
+      {image && (
+        <img
+          src={image}
+          alt={title}
+          className="news-image"
+          width="300"
+        />
+      )}
 
-      <h2>{title}</h2>
+      <h2 className="news-content">{title}</h2>
 
-      <p>{description}</p>
+      <p className="news-actions">{description}</p>
 
-      <button onClick={handleFavorite}>
-        {favorite ? '♥ Favorited' : '♡ Favorite'}
+      <button  className="favorite-btn" onClick={handleFavorite}>
+        {favorite ? "♥ Favorited" : "♡ Favorite"}
       </button>
+
+      <a className="read-more"
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read More
+      </a>
     </article>
-  )
+  );
 }
 
-export default NewsCard
+export default NewsCard;

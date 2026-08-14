@@ -1,0 +1,28 @@
+.navbar {
+  background: white;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px 20px;
+
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.nav-content a {
+  color: #222;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.nav-content a:hover {
+  color: #666;
+}
